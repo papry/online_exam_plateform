@@ -5,7 +5,7 @@
 {% block content %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change_list' %}">My Quizzes</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'teachers:quiz_change_list' %}">Exam</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{ quiz.name }}</li>
     </ol>
   </nav>
@@ -49,7 +49,7 @@
         </div>
       {% empty %}
         <div class="list-group-item text-center">
-          <p class="text-muted font-italic mb-0">You haven't created any questions yet. Go ahead and <a href="{% url 'teachers:question_add' quiz.pk %}">add the first question</a>.</p>
+          <!--<p class="text-muted font-italic mb-0">You haven't created any questions yet. Go ahead and <a href="{% url 'teachers:question_add' quiz.pk %}">add the first question</a>.</p>-->
         </div>
       {% endfor %}
     </div>
