@@ -3,7 +3,7 @@
 {% block content %}
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">My Quizzes</li>
+      <li class="breadcrumb-item active" aria-current="page">My Exam</li>
     </ol>
   </nav>
   <h2 class="mb-3">Exam</h2>
@@ -31,9 +31,9 @@
             </td>
           </tr>
         {% empty %}
-          <tr>
+         <!-- <tr>
             <td class="bg-light text-center font-italic" colspan="5">You haven't created any quiz yet.</td>
-          </tr>
+          </tr>-->
         {% endfor %}
       </tbody>
     </table>

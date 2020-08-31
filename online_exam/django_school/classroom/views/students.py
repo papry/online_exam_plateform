@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 
 from ..decorators import student_required
-from ..forms import StudentInterestsForm, StudentSignUpForm, TakeQuizForm
+from ..forms import StudentInterestsForm, StudentSignUpForm, TakeQuizForm,StudentForm
 from ..models import Quiz, Student, TakenQuiz, User
 
 
@@ -105,7 +105,7 @@ def take_quiz(request, pk):
                     if score < 50.0:
                         messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (quiz.name, score))
                     else:
-                        messages.success(request, 'Congratulations! You completed the quiz %s with success! You scored %s points.' % (quiz.name, score))
+                        messages.success(request, 'Congratulations!  You scored %s points.' % (quiz.name, score))
                     return redirect('students:quiz_list')
     else:
         form = TakeQuizForm(question=question)

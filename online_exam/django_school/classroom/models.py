@@ -74,3 +74,10 @@ class TakenQuiz(models.Model):
 class StudentAnswer(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_answers')
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')
+
+class Student_info(models.Model):
+    s_id = models.CharField(max_length=10)
+    name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=100)
+    dpt = models.CharField(max_length=50)
+    phn = models.CharField(max_length=11)
