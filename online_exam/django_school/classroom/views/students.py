@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, UpdateView
 
 from ..decorators import student_required
-from ..forms import StudentInterestsForm, StudentSignUpForm, TakeQuizForm,StudentForm
+from ..forms import StudentInterestsForm, StudentSignUpForm, TakeQuizForm
 from ..models import Quiz, Student, TakenQuiz, User
 
 
@@ -81,7 +81,7 @@ def take_quiz(request, pk):
     student = request.user.student
 
     if student.quizzes.filter(pk=pk).exists():
-        return render(request, 'students/taken_quiz.html')
+        return render(request, 'students/taken_quiz_list.html')
 
     total_questions = quiz.questions.count()
     unanswered_questions = student.get_unanswered_questions(quiz)
@@ -105,7 +105,7 @@ def take_quiz(request, pk):
                     if score < 50.0:
                         messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (quiz.name, score))
                     else:
-                        messages.success(request, 'Congratulations!  You scored %s points.' % (quiz.name, score))
+                        messages.success(request, 'Congratulations!  You scored %s points %s.' % (quiz.name, score))
                     return redirect('students:quiz_list')
     else:
         form = TakeQuizForm(question=question)

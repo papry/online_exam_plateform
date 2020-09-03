@@ -4,7 +4,7 @@ from django.db import transaction
 from django.forms.utils import ValidationError
 
 from classroom.models import (Answer, Question, Student, StudentAnswer,
-                              Subject, User,Student_info)
+                              Subject, User)
 
 
 class TeacherSignUpForm(UserCreationForm):
@@ -84,7 +84,7 @@ class TakeQuizForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['answer'].queryset = question.answers.order_by('text')
 
-class StudentForm(forms.ModelForm):
+"""class StudentForm(forms.ModelForm):
     class Meta:
         model = Student_info
-        fields = ("__all__")
+        fields = ("__all__")"""
