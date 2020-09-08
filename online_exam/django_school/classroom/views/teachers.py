@@ -14,7 +14,7 @@ from ..decorators import teacher_required
 from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm
 from ..models import Answer, Question, Quiz, User
 
-
+import random
 class TeacherSignUpView(CreateView):
     model = User
     form_class = TeacherSignUpForm
@@ -157,7 +157,9 @@ def question_change(request, quiz_pk, question_pk):
 
     if request.method == 'POST':
         form = QuestionForm(request.POST, instance=question)
+
         formset = AnswerFormSet(request.POST, instance=question)
+
         if form.is_valid() and formset.is_valid():
             with transaction.atomic():
                 form.save()
