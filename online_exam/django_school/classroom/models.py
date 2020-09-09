@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.datetime_safe import datetime
 from django.utils.html import escape, mark_safe
 
 
@@ -68,7 +69,7 @@ class TakenQuiz(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_quizzes')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='taken_quizzes')
     score = models.FloatField()
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=datetime.now,blank=True)
 
 
 class StudentAnswer(models.Model):
