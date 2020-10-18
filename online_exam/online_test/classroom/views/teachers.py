@@ -12,7 +12,8 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 
 from ..decorators import teacher_required
 from ..forms import BaseAnswerInlineFormSet, QuestionForm, TeacherSignUpForm
-from ..models import Answer, Question, Quiz, User
+from ..models import Answer, Question, Quiz, User,See
+
 
 import random
 class TeacherSignUpView(CreateView):
@@ -201,3 +202,17 @@ class QuestionDeleteView(DeleteView):
     def get_success_url(self):
         question = self.get_object()
         return reverse('teachers:quiz_change', kwargs={'pk': question.quiz_id})
+
+def pie_chart(request):
+    labels = []
+    data = []
+
+    queryset = See.objects.order_by('-score')[:5]
+    for city in queryset:
+        labels.append(city.subject)
+        data.append(city.score)
+
+    return render(request, 'classroom/teachers/pie_chart.html', {
+        'labels': labels,
+        'data': data,
+    })

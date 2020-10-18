@@ -19,6 +19,7 @@ urlpatterns = [
         path('quiz/add/', teachers.QuizCreateView.as_view(), name='quiz_add'),
         path('quiz/<int:pk>/', teachers.QuizUpdateView.as_view(), name='quiz_change'),
         path('quiz/<int:pk>/delete/', teachers.QuizDeleteView.as_view(), name='quiz_delete'),
+        path('pie-chart/', teachers.pie_chart, name='pie-chart'),
         path('quiz/<int:pk>/results/', teachers.QuizResultsView.as_view(), name='quiz_results'),
         path('quiz/<int:pk>/question/add/', teachers.question_add, name='question_add'),
         path('quiz/<int:quiz_pk>/question/<int:question_pk>/', teachers.question_change, name='question_change'),

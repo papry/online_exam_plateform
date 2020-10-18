@@ -54,8 +54,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+
 ]
 # Auto logout delay in minutes
+#AUTO_LOGOUT_DELAY = 5 #equivalent to 5 minutes
 
 ROOT_URLCONF = 'django_school.urls'
 
@@ -152,3 +154,5 @@ MESSAGE_TAGS = {
 # Third party apps configuration
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#Handle session is not Json Serializable

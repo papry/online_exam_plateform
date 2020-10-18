@@ -3,7 +3,6 @@ from django.db import models
 from django.utils.datetime_safe import datetime
 from django.utils.html import escape, mark_safe
 
-
 class User(AbstractUser):
     is_student = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
@@ -82,3 +81,9 @@ class StudentAnswer(models.Model):
     email = models.EmailField(max_length=100)
     dpt = models.CharField(max_length=50)
     phn = models.CharField(max_length=11)"""
+
+class See(models.Model):
+
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    score=models.ForeignKey(TakenQuiz, on_delete=models.CASCADE)
+
